@@ -1,0 +1,6 @@
+PORT = 
+MONGO_URI = ""
+REDIS_PASSWORD =""
+REDIS_URL =""
+REDIS_PORT = ""
+AUTH_SERVICE_URL = "http://localhost:5555"
