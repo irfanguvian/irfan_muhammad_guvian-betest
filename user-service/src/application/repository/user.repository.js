@@ -28,7 +28,7 @@ export class UserRepository {
         return this.userModel.find();
     }
 
-    // setter
+    // redis
 
     async setCacheData(key, value, expired) {
         return this.clientRedis.set(key, value, expired);
@@ -38,5 +38,7 @@ export class UserRepository {
         return this.clientRedis.get(key);
     }
 
-    
+    async deleteCacheData(key) {
+        return this.clientRedis.del(key);
+    } 
 }

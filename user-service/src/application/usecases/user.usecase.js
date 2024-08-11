@@ -79,6 +79,7 @@ export class UserUsecase {
             }
 
             const userUpdated = await this.userRepository.updateUserWithIdentityNumber(argumentUpdate);
+            const deleteKeyRedis = await this.userRepository.deleteCacheData([`${checkUser.data.user.accountNumber}`, `${checkUser.data.user.identityNumber}`]);
 
             result.success = true;
             result.message = RETURN_SUCCESS_MESSAGE;
@@ -112,8 +113,8 @@ export class UserUsecase {
                 throw new Error("User not found");
             }
 
-
             const userDeleted = await this.userRepository.deleteUserWithIdentityNumber(args.identityNumber);
+            const deleteKeyRedis = await this.userRepository.deleteCacheData([`${checkUser.data.user.accountNumber}`, `${checkUser.data.user.identityNumber}`]);
 
             result.success = true;
             result.message = RETURN_SUCCESS_MESSAGE;
